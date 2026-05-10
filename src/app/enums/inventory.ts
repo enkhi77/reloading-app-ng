@@ -6,10 +6,10 @@ export enum InventoryForms {
 }
 
 export enum InventoryMenu {
-  brass = 'Brass',
-  bullets = 'Bullets',
-  powders = 'Powders',
-  primers = 'Primers'
+  brass = 0,
+  bullets = 1,
+  powders = 2,
+  primers = 3,
 }
 
 export enum InventoryMode {

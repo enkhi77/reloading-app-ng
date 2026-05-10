@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
 
+  .button-row {
+    padding: 24px 0;
+  }
+
   .form-selector-row {
     display: flex;
     justify-content: flex-start;

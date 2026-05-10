@@ -6,22 +6,31 @@
   <mat-tab-group class="tab-group" [(selectedIndex)]="selectedIndex">
     @for (item of inventoryMenu; track item.id) {
       <mat-tab label="{{ item.name }}">
+        <div class="button-row">
+          <button aria-label="Add Mode" mat-raised-button (click)="changeViewMode(InventoryMode.add)">
+            <mat-icon>add_circle</mat-icon>
+          </button>
+          <button aria-label="View Mode" mat-raised-button (click)="changeViewMode(InventoryMode.view)">
+            <mat-icon>table</mat-icon>
+          </button>
+        </div>
+
         @switch (viewMode()) {
           @case (InventoryMode.add) {
             <p class="mode-indicator">Add Mode</p>
             <div class="form-container">
-              {{ selectedMenu() }}
-              @switch (selectedMenu()) {
-                @case (0) {
+              {{ selectedIndex }}
+              @switch (selectedIndex) {
+                @case (InventoryMenu.brass) {
                   <app-brass></app-brass>
                 }
-                @case (1) {
+                @case (InventoryMenu.bullets) {
                   <app-bullet-form></app-bullet-form>
                 }
-                @case (2) {
+                @case (InventoryMenu.powders) {
                   <app-powder-form></app-powder-form>
                 }
-                @case (3) {
+                @case (InventoryMenu.primers) {
                   <app-primer-form></app-primer-form>
                 }
                 @default {
@@ -32,10 +41,27 @@
           }
           @case (InventoryMode.edit) {
             <p class="mode-indicator">Edit Mode</p>
+            @switch (selectedIndex) {
+              @case (InventoryMenu.brass) {
+                <app-brass></app-brass>
+              }
+              @case (InventoryMenu.bullets) {
+                <app-bullet-form></app-bullet-form>
+              }
+              @case (InventoryMenu.powders) {
+                <app-powder-form></app-powder-form>
+              }
+              @case (InventoryMenu.primers) {
+                <app-primer-form></app-primer-form>
+              }
+              @default {
+                <p>Please select an inventory form to manage your components.</p>
+              }
+            }
           }
           @case (InventoryMode.view) {
             <p class="mode-indicator">{{item.name}} View Mode</p>
-            <app-inventory-table></app-inventory-table>
+            <app-inventory-table [tableData]="inventoryTableData()" [type]="selectedIndex"></app-inventory-table>
           }
         }
       </mat-tab>
