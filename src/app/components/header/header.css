@@ -7,16 +7,4 @@
     padding: 12px 48px;
     font-size: 36px;
   }
-
-  .nav {
-    align-items: center;
-    flex: 1 1 0;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100vw;
-
-    .nav-button {
-      width: 100%;
-    }
-  }
 }
