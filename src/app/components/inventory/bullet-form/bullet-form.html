@@ -1,0 +1,24 @@
+<div class="form-container">
+  <form [formGroup]="bulletForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-group">
+      <label for="manufacturer">Manufacturer:</label>
+      <mat-select id="manufacturer" formControlName="manufacturerId" type="text">
+        @for (manufacturer of manufacturers; track manufacturer.id) {
+          <mat-option [value]="manufacturer.id">{{ manufacturer.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="form-group">
+      <label for="diameter">Diameter:</label>
+      <input matInput id="diameter" formControlName="diameter" type="text" />
+    </mat-form-field>
+
+    <mat-form-field class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input matInput id="quantity" formControlName="quantity" type="number" />
+    </mat-form-field>
+
+    <button mat-button type="submit" [disabled]="bulletForm.invalid">Add Bullet</button>
+  </form>
+</div>

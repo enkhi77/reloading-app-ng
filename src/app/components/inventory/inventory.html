@@ -1,0 +1,44 @@
+
+<div class="page-container grid">
+  <h1>Inventory</h1>
+  <p>Manage your inventory of components and supplies for reloading.</p>
+
+  <mat-tab-group class="tab-group" [(selectedIndex)]="selectedIndex">
+    @for (item of inventoryMenu; track item.id) {
+      <mat-tab label="{{ item.name }}">
+        @switch (viewMode()) {
+          @case (InventoryMode.add) {
+            <p class="mode-indicator">Add Mode</p>
+            <div class="form-container">
+              {{ selectedMenu() }}
+              @switch (selectedMenu()) {
+                @case (0) {
+                  <app-brass></app-brass>
+                }
+                @case (1) {
+                  <app-bullet-form></app-bullet-form>
+                }
+                @case (2) {
+                  <app-powder-form></app-powder-form>
+                }
+                @case (3) {
+                  <app-primer-form></app-primer-form>
+                }
+                @default {
+                  <p>Please select an inventory form to manage your components.</p>
+                }
+              }
+            </div>
+          }
+          @case (InventoryMode.edit) {
+            <p class="mode-indicator">Edit Mode</p>
+          }
+          @case (InventoryMode.view) {
+            <p class="mode-indicator">{{item.name}} View Mode</p>
+            <app-inventory-table></app-inventory-table>
+          }
+        }
+      </mat-tab>
+    }
+  </mat-tab-group>
+</div>

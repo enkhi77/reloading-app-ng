@@ -1,0 +1,13 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+
+  .form-selector-row {
+    display: flex;
+    justify-content: flex-start;
+
+    .form-selector {
+      max-width: 320px;
+    }
+  }
+}

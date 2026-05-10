@@ -1,0 +1,10 @@
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .content {
+    flex: 1 1 0;
+    padding: 12px 48px;
+  }
+}
